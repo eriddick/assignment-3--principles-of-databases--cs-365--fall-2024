@@ -25,11 +25,19 @@
         <select name="current-attribute" id="current-attribute">
           <option>website_name</option>
           <option>website_url</option>
+          <option>user_name</option>
+          <option>email</option>
+          <option>password</option>
+          <option>comment</option>
         </select>
         = <input type="text" name="new-attribute" required> WHERE
         <select name="query-attribute" id="query-attribute">
-          <option>artist_id</option>
-          <option>artist_name</option>
+          <option>website_name</option>
+          <option>website_url</option>
+          <option>user_name</option>
+          <option>email</option>
+          <option>password</option>
+          <option>comment</option>
         </select>
         = <input type="text" name="pattern" required>
         <input type="hidden" name="submitted" value="2">
@@ -39,9 +47,9 @@
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
       <fieldset>
         <legend>Insert</legend>
-        INSERT INTO website VALUES ( <input type="text" name="website_name" placeholder="website_name" required>, <input type="text" name="website-url" placeholder="website_url" required>
+        INSERT INTO website VALUES ( <input type="text" name="website_name" placeholder="website_name" required>, <input type="text" name="website_url" placeholder="website_url" required>
         <input type="text" name="email" placeholder="email" required>, <input type="text" name="user_name" placeholder="user-name" required>,
-        <input type="text" name="password" placeholder="password" required>, <textearea name="comment" placeholder="comment" required>);
+        <input type="text" name="password" placeholder="password" required>, <input type="textarea" name="comment" placeholder="comment">);
         <input type="hidden" name="submitted" value="3">
         <p><input type="submit" value="insert"></p>
       </fieldset>
@@ -49,10 +57,14 @@
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
       <fieldset>
         <legend>Delete</legend>
-        DELETE FROM artist WHERE
+        DELETE FROM password WHERE
         <select name="current-attribute" id="current-attribute">
-          <option>artist_id</option>
-          <option>artist_name</option>
+          <option>website_name</option>
+          <option>website_url</option>
+          <option>user_name</option>
+          <option>email</option>
+          <option>password</option>
+          <option>comment</option>
         </select>
         = <input type="text" name="pattern" required>
           <input type="hidden" name="submitted" value="4">
@@ -94,11 +106,12 @@ if ($option != null) {
 
         case INSERT:
             if (("" == $_POST['website_name']) || ("" == $_POST['website_url']) || ("" == $_POST['email']) || ("" == $_POST['user_name'])
-            || ("" == $_POST['password']) ) {
+            || ("" == $_POST['password']) || ("" == $_POST['comment'])) {
                 echo '<div id="error">At least one field in your insert request ' .
                      'is empty. Please try again.</div>' . "\n";
             } else {
-                insert($_POST['artist-id'],$_POST['artist-name']);
+                insert($_POST['website_name'],$_POST['website_url'],$_POST['user_name'],
+                $_POST['email'],$_POST['password'],$_POST['comment']);
             }
 
             break;
