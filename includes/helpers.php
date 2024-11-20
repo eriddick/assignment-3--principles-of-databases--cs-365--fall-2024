@@ -21,7 +21,7 @@ function search($search) {
         $statement = $db -> prepare($select_query);
         $statement -> execute();
 
-        $select_query = "SELECT * FROM password WHERE password LIKE AESDECRYPT(\"%{$search}%\", \"" . KEYSTR . "\", " . INITVECTOR . ") USING 'utf8') AS plain_text_password OR comment LIKE \"%{$search}%\"";
+        $select_query = "SELECT * FROM password WHERE password LIKE AESDECRYPT(\"%{$search}%\", \"" . KEYSTR . "\", " . INITVECTOR . ") USING \"utf8\") AS plain_text_password OR comment LIKE \"%{$search}%\"";
         $statement = $db -> prepare($select_query);
         $statement -> execute();
 

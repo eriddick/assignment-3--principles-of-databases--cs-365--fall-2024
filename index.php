@@ -21,7 +21,7 @@
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
       <fieldset>
         <legend>Update</legend>
-        UPDATE website SET
+        UPDATE student_passwords SET
         <select name="current-attribute" id="current-attribute">
           <option>website_name</option>
           <option>website_url</option>
@@ -47,7 +47,7 @@
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
       <fieldset>
         <legend>Insert</legend>
-        INSERT INTO website VALUES ( <input type="text" name="website_name" placeholder="website_name" required>, <input type="text" name="website_url" placeholder="website_url" required>
+        INSERT INTO student_passwords VALUES ( <input type="text" name="website_name" placeholder="website_name" required>, <input type="text" name="website_url" placeholder="website_url" required>
         <input type="text" name="email" placeholder="email" required>, <input type="text" name="user_name" placeholder="user-name" required>,
         <input type="text" name="password" placeholder="password" required>, <input type="textarea" name="comment" placeholder="comment">);
         <input type="hidden" name="submitted" value="3">
@@ -57,7 +57,7 @@
     <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
       <fieldset>
         <legend>Delete</legend>
-        DELETE FROM password WHERE
+        DELETE FROM student_passwords WHERE
         <select name="current-attribute" id="current-attribute">
           <option>website_name</option>
           <option>website_url</option>
